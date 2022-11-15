@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:counter_7/tambah_budget.dart';
+import 'package:counter_7/daftar_budget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,18 +13,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Counter_7',
+      title: 'counter_7',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Program Counter'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -72,8 +71,46 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('counter_7'),
       ),
+      // Menambahkan drawer menu
+      drawer: Drawer(
+          child: Column(
+            children: [
+              // Menambahkan clickable menu
+              ListTile(
+                title: const Text('counter_7'),
+                onTap: () {
+                  // Route menu ke halaman utama
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyHomePage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Tambah Budget'),
+                onTap: () {
+                  // Route menu ke halaman tambah budget
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TambahBudget()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Data Budget'),
+                onTap: () {
+                  // Route menu ke halaman daftar budget
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const DaftarBudget()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
