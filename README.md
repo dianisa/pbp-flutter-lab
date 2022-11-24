@@ -60,3 +60,29 @@ Apabila menggunakan Navigator.push(), maka page yang dituju akan ditambahkan ke 
     2. Tambahkan drawer ke semua file tersebut. Isi drawer dengan ListTile yang apabila ditekan akan melakukan routing ke halaman tertentu.
     3. Pada halaman Tambah Budget, buat widget form yang akan menerima input user. Buat dua TextFormField untuk menerima input judul dan nominal serta DropdownButton untuk memilih jenis budget. Buat TextButton untuk menyimpan data ke sebuah list
     4. Pada halaman Data Budget, import list dari tambah budget. Lakukan looping dan buat sebuah card untuk menampung dan menampilkan setiap data pada list.
+
+## Tugas 9 (TUGAS INDIVIDU TERAKHIR YEYYYY)
+- Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Ya, kita dapat mengambil data JSON tanpa membuat model. Data JSON dapat langsung didecode dan disimpan dalam sebuah object Map<\String, dynamic>. Akibatnya, tipe data dari setiap attribut tidak diketahui dan rentan terjadi runtime error. Maka, sebaiknya dibuat model agar tipe data setiap attribut dapat diketahui dan error langsung terdeteksi saat compile.
+
+- Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+    1. Text: Widget yang berisi teks
+    2. InkWell: Widget yang membuat child widgetnya dapat diklik
+    3. Column: Widget berupa kolom yang menempatkan childnya sebagai baris-baris
+    4. Center: Widget yang menempatkan childnya dengan alignment center
+    5. SizedBox: Membuat box dengan ukuran tertentu
+    6. RichText: Membuat tulisan dengan font style yang berbeda-beda
+    7. Drawer: Widget untuk berpindah page
+    8. TextButton: Widget tombol
+
+- Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+Kirim http request dengan url yang akan mengembalikan http response. Response tersebut didecode dengan jsonDecode() dan disimpan dalam sebuah object Map<\String, dynamic>. Kemudian, setiap data pada map tersebut dikonversi menjadi sebuah object model dan disimpan dalan sebuah list. Data pada list tersebut ditampilkan dengan bantuan ListView.builder().
+
+- Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+    1. Tambahkan ListTile pada drawer. pada event onTap, lakukan routing ke page My Watch List dengan bantuan MaterialPageRoute dan Navigator.pushReplacement
+    2. Buat suatu file dart yang diisi dengan model WatchList.
+    3. Membuat file baru yang diisi dengan page My Watch List. Lakukan fetch data dari heroku dan tampilkan jdul dari setiap film.
+    4. Gunakan widget InkWell agar setiap judul dapat diklik dan menampilkan page detail 
+    5. Buat file baru yang berisi page untuk menampilkan detail dari film
+    6. Pada page detail, tambahkan tombol back agar dapat kembali ke page My Watch List
+
